@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using HR.LeaveManagment.Domain.Common;
 
 namespace HR.LeaveManagment.Domain;
 
-public class LeaveRequest
+public class LeaveRequest : BaseEntity
 {
-    public int Id { get; set; }
 
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
