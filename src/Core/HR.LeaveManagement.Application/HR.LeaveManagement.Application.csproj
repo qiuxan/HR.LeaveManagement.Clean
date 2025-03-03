@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HR.LeaveManagment.Domain\HR.LeaveManagment.Domain.csproj" />
+    <ProjectReference Include="..\HR.LeaveManagment.Domain\HR.LeaveManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>
