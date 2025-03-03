@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails;
@@ -23,6 +24,11 @@ public class GetLeaveTypesDetailsQueryHandler: IRequestHandler<GetLeaveTypesDeta
     {
         //Query the database
         var leaveTypes = await _leaveTypeRepository.GetByIdAsync(request.Id);
+
+        if (leaveTypes == null)
+        {
+            throw new NotFoundException(nameof(LeaveType), request.Id);
+        }
 
         //convert the data objects to Dtos using AutoMapper
         var data = _mapper.Map<LeaveTypeDetailsDto>(leaveTypes);
