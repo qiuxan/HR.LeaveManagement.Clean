@@ -37,7 +37,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
             var leaveType = _mapper.Map<LeaveManagement.Domain.LeaveType>(request);
             // save the LeaveType object to the database
 
-            leaveType = await _leaveTypeRepository.CreateAsync(leaveType);
+            await _leaveTypeRepository.CreateAsync(leaveType);
 
             //return the id of the newly created LeaveType
 

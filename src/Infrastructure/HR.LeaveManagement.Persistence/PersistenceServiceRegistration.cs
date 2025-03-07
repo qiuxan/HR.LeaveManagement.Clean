@@ -1,4 +1,6 @@
-﻿using HR.LeaveManagement.Persistence.DatabaseContext;
+﻿ using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Persistence.DatabaseContext;
+using HR.LeaveManagement.Persistence.DatabaseContext.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,11 @@ public static class PersistenceServiceRegistration
         {
             options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString"));
         });
+
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // let the Program.cs know that IGenericRepository<> is implemented by GenericRepository<>
+        services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+        services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+        services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
         return services;
     }
 }

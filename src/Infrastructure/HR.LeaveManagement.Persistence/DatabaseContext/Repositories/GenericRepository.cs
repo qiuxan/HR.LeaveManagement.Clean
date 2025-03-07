@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HR.LeaveManagement.Persistence.DatabaseContext.Repositories
 {
-    class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly HrDatabaseContext _context;
 
