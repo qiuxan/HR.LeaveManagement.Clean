@@ -14,19 +14,20 @@ public class CreateLeaveTypeCommandValidator : AbstractValidator<CreateLeaveType
 
     public CreateLeaveTypeCommandValidator(ILeaveTypeRepository leaveTypeRepository)
     {
-        _leaveTypeRepository = leaveTypeRepository;
         RuleFor(p=>p.Name)
             .NotEmpty().WithMessage("{PropertyName} is required.")
             .NotNull()
             .MaximumLength(70).WithMessage("{PropertyName} must not exceed 70 characters.");
 
         RuleFor(p => p.DefaultDays)
-            .GreaterThan(100).WithMessage("{PropertyName} cannot exceed 100")
-            .LessThan(1).WithMessage("{PropertyName} can not be less than 1");
+            .LessThan(100).WithMessage("{PropertyName} cannot exceed 100")
+            .GreaterThan(1).WithMessage("{PropertyName} can not be less than 1");
 
         RuleFor(q => q)
             .MustAsync(LeaveTypeNameUnique)
             .WithMessage("The specified leave type already exists");
+
+        _leaveTypeRepository = leaveTypeRepository;
     }
 
     private async Task<bool> LeaveTypeNameUnique(CreateLeaveTypeCommand command, CancellationToken token)
