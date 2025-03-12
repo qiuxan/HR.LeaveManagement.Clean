@@ -23,7 +23,7 @@ public class GetLeaveAllocationListHandler : IRequestHandler<GetLeaveAllocationL
     public async Task<List<LeaveAllocationDto>> Handle(GetLeaveAllocationListQuery request, CancellationToken cancellationToken)
     {
         var allLeaveAllocations = await _leaveAllocationRepository.GetLeaveAllocationsWithDetails();
-        var leaveAllocationDto = _mapper.Map<List<LeaveAllocationDto>>(allLeaveAllocations);
-        return leaveAllocationDto;
+        var leaveAllocationDtoList = _mapper.Map<List<LeaveAllocationDto>>(allLeaveAllocations);
+        return leaveAllocationDtoList;
     }
 }
