@@ -1,12 +1,12 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
+using HR.LeaveManagement.Api.Models;
 using HR.LeaveManagement.Application.Exceptions;
-using HR.LeaveManagment.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace HR.LeaveManagment.Api.Middleware;
+namespace HR.LeaveManagement.Api.Middleware;
 
 // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
 public class ExceptionMiddleware

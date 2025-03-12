@@ -1,7 +1,7 @@
 using HR.LeaveManagement.Application;
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Persistence;
-using HR.LeaveManagment.Api.Middleware;
+using HR.LeaveManagement.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
